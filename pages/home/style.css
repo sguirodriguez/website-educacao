@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+/* Usar :root pode é útil para declarar uma variável CSS global: */
+:root{
+    --green:#00e77f;
+    --white:#fff;
+    --light-white:#aaa;
+    --black:#3d3d3d;
+    --light-bg:#4b4b4b;
+}
+
+/** é chamado de seletor universal. Esse seletor representa todos os elementos serão afetados pelas definições de estilo ali colocadas.*/
+*{
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    transition: .2s linear;
+    text-transform: capitalize;
+}
+
+/*selection - ao usuário selecionar um texto consigo mudar os parametros de cores*/
+*::selection{
+    background-color: var(--white);
+    color:var(--black)
+}
+
+/*Ao redefinir a fonte raiz (HTML) para 62,5%, posso calcular todas as minhas unidades REM com essa fórmula mágica de 1rem = 10px*/
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+}
+
+body{
+    background-color: var(--black);
+}
+/* aplico ao meu section margin 0 auto para centralizar e padding de acordo com rem para seguir responsividade em textos*/
+section{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* em header uso fixed para deixar a barra em qualquer lugar do site*/
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--light-bg);
+}
+
+/* posso atacar uma classe específica */
+.header .flex{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .flex .logo{
+    font-size: 2.5rem;
+    color:var(--white);
+}
+
+.header .flex .navbar a{
+    margin-left: 2rem;
+    color:var(--light-white);
+    font-size: 2rem;
+}
+
+.header .flex .navbar a:hover{
+    color:var(--green);
+}
+
+.menu-btn{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background-image: url(../../assets/menu-bar.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+
+.home{
+    margin-top: 9rem;
+}
+
+.home .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    gap: 1.5rem;
+}
+
+.home .row .content{
+    flex:1;
+    flex-basis: 25rem;
+    text-align: center;
+}
+
+.home .row .content h3{
+   margin-bottom: 1rem;
+   font-size: 10rem;
+   color: var(--white);
+}
+.home .row .content h3 span{
+    color: var(--green);
+ }
+
+.home .row .image{
+    flex:1;
+    flex-basis: 25rem;
+}
+.home .row .image img{
+    width: 100%;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background-color: var(--light-bg);
+    cursor: pointer;
+    color: var(--white);
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+}
+
+.btn:hover{
+ background-color: var(--white);
+ color: var(--black);
+}
+
+.count{
+    margin-top: 2rem;
+    padding: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.count .box-container{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.count .box-container .box{
+    flex:1;
+    flex-basis: 20rem;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    background-color: var(--light-bg);
+    padding: 2.5rem;
+}
+
+.count .box-container .box .content h3{
+    color: var(--white);
+    font-size: 1.7rem;
+}
+
+.count .box-container .box .content p{
+    color: var(--light-white);
+    font-size: 1.2rem;
+}
+
+.box-image{
+    height: 4rem;
+}
+
+
+/*Large devices */
+@media (max-width: 992px) { 
+
+    html{
+        font-size: 55%;
+    }
+ }
+
+/*Medium devices */
+@media (max-width: 768px) { 
+
+    .menu-btn{
+        display: inline-block;
+    }
+
+    .menu-btn.cancel{
+        background-image: url(../../assets/menu-cancel.png);
+        display: inline-block;
+    }
+
+
+    .header .flex .navbar{
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        border-top: .1rem solid var(--light-white);
+        border-bottom: .1rem solid var(--light-white);
+        background-color:var(--light-bg);
+        clip-path: inset(0 0 100% 0);
+    }
+
+    .header .flex .navbar a{
+        display: block;
+        margin: 2rem;
+    }
+
+    .header .flex .navbar.active{
+        display: inline-block;
+        clip-path: inset(0 0 0 0)
+    }
+
+    .home .row .content h3{
+        font-size: 6rem;
+     }
+     
+}
+
+/*Small devices*/
+@media (max-width: 660px) {
+    .count .box-container{
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+    }
+
+    .count .box-container .box{
+        flex:1;
+        width: 100%;
+    }
+ }
+
+
+
+
